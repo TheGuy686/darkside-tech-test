@@ -4,7 +4,7 @@ FROM php:8.0-fpm
 WORKDIR /var/www/html
 
 # Copy your Laravel application into the container
-COPY API /var/www/html
+COPY . .
 
 # Install all the Laravel application dependencies before the composser install
 RUN apt-get update && apt-get install -y \

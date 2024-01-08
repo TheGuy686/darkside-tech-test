@@ -1,16 +1,26 @@
 version: '3.8'
 services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./API:/var/www/html
+
   db:
     image: mysql:latest
     container_name: mysql-container
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: darkside_code-test
+      MYSQL_DATABASE: darkside_code_test
       MYSQL_USER: root
       MYSQL_PASSWORD: root
     ports:
       - "3306:3306"
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin-container
