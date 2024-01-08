@@ -1,19 +1,19 @@
 version: '3.8'
 services:
-  # backend:
-  #   restart: always
-  #   build:
-  #     args:
-  #       user: be-user
-  #       uid: 1000
-  #     context: ./API
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "9000:9000"
-  #   volumes:
-  #     - ./API:/var/www/html
-  #   depends_on:
-  #     - db
+  backend:
+    restart: always
+    build:
+      args:
+        user: be-user
+        uid: 1000
+      context: ./API
+      dockerfile: Dockerfile
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./API:/var/www/html
+    depends_on:
+      - db
 
   # frontend:
   #   restart: always
@@ -26,22 +26,6 @@ services:
   #     - ./FE:/usr/src/app
   #   depends_on:
   #     - backend
-
-  # db:
-  #   image: mysql:latest
-  #   container_name: mysql-container
-  #   logging:
-  #     options:
-  #       max-size: 10m
-  #   environment:
-  #     MYSQL_DATABASE: darkside_code_test
-  #     MYSQL_USER: user
-  #     MYSQL_ROOT_PASSWORD: user
-  #   restart: always
-  #   ports:
-  #     - 8080:8080
-    # command: >
-    #   bash -c "mysql --user='user' --host='db' --password='user' < './docs/init.sql'"
 
   db:
     image: mysql:latest
@@ -58,8 +42,6 @@ services:
       - 8080:8080
     volumes:
       - ./API/docs/init.sql:/docker-entrypoint-initdb.d/init.sql
-    # command: >
-    #   bash -c "sleep 5 && mysql --user='root' --password='user' < './docker-entrypoint-initdb.d/init.sql'"
       
   phpmyadmin:
     image: phpmyadmin/phpmyadmin

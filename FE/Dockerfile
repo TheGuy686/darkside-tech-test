@@ -1,6 +1,8 @@
 # FE Dockerfile
 FROM node:latest
 
+RUN echo "alias ls='ls --color=auto'" >> /root/.bashrc
+
 # Set the working directory inside the container
 WORKDIR /usr/src/web
 

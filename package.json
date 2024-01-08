@@ -4,6 +4,7 @@
   "description": "## Prerequisites",
   "main": "index.js",
   "scripts": {
+    "be-term": "docker exec -it darkside-developments-technical-test_backend_1 /bin/bash",
     "start": "docker-compose -f ./docker-compose.yaml down; docker-compose -f docker-compose.yaml --env-file '.env' up --build"
   },
   "keywords": [],
